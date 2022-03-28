@@ -1,8 +1,15 @@
 <h2>Shopping list</h2>
 
+
+<div >
+    <input type="text" [(ngModel)]="productToAdd.name"/>
+    <input type="number" [(ngModel)]="productToAdd.cuantity"/>  
+    <button (click)="add()">Add</button>
+</div>
+
 <ul>
-    <li *ngFor="let product of list">
-        <app-product [product]="product"></app-product>
+    <li *ngFor="let item of list">
+        <app-product [product]="item"></app-product>
     </li>
 </ul>
 
