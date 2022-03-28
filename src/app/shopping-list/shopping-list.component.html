@@ -2,14 +2,14 @@
 
 
 <div >
-    <input type="text" [(ngModel)]="productToAdd.name"/>
-    <input type="number" [(ngModel)]="productToAdd.cuantity"/>  
+    <input type="text" [(ngModel)]="product.name"/>
+    <input type="number" [(ngModel)]="product.cuantity"/>  
     <button (click)="add()">Add</button>
 </div>
 
 <ul>
     <li *ngFor="let item of list">
-        <app-product [product]="item"></app-product>
+        <app-product [product]="item" (delete)="onDelete($event)"></app-product>
     </li>
 </ul>
 
