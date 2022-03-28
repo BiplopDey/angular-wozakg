@@ -8,9 +8,9 @@ import { Product } from './product';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
   @Input() product!: Product
   @Output() delete = new EventEmitter<Product>()
+  @Output() edit = new EventEmitter<Product>()
 
   constructor() { }
 
@@ -20,4 +20,9 @@ export class ProductComponent implements OnInit {
   deleteProduct(): void{
     this.delete.emit(this.product)
   }
+
+  editProduct(): void{
+    this.edit.emit(this.product)
+  }
+  
 }
