@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Product } from '../product/product';
 
 @Component({
@@ -8,16 +8,22 @@ import { Product } from '../product/product';
 })
 export class ShoppingListComponent implements OnInit {
   list!: Array<Product>
-  productToAdd: Product = {name:"",cuantity:1}
+  product!: Product 
+  
   constructor() { 
   }
 
   ngOnInit(): void {
+    this.product = {name:"",cuantity:1}
     this.list = [{name:"Apple", cuantity:2}, {name:"Pear", cuantity:3}]
   }
 
   add(): void {
-    this.list = [this.productToAdd, ...this.list]
-    this.productToAdd = {name:"",cuantity:1}
+    this.list = [this.product, ...this.list]
+    this.product = {name:"",cuantity:1}
+  }
+
+  onDelete(productToDelete : Product): void{
+    this.list = this.list.filter(prod  => prod !== productToDelete)
   }
 }
