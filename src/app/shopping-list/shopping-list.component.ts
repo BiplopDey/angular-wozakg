@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Product } from '../product/product';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -10,12 +11,12 @@ export class ShoppingListComponent implements OnInit {
   list!: Array<Product>
   product!: Product 
   
-  constructor() { 
+  constructor(private service: ShoppingListService) { 
   }
 
   ngOnInit(): void {
     this.product = {name:"",cuantity:1}
-    this.list = [{name:"Apple", cuantity:2}, {name:"Pear", cuantity:3}]
+    this.list = this.service.getProduct();
   }
 
   save(): void {
@@ -28,7 +29,7 @@ export class ShoppingListComponent implements OnInit {
       this.product = {name:"", cuantity:1}
       return
     }
-
+    
     this.list = [this.product, ...this.list]
     this.product = {name:"", cuantity:1}
   }
@@ -50,7 +51,6 @@ export class ShoppingListComponent implements OnInit {
   }
 
   onEdit(productToEdit : Product): void{
-    console.log(productToEdit)
     this.product = productToEdit
   }
 

@@ -7,9 +7,8 @@
     <button (click)="save()">Save</button>
 </div>
 
-<ul>
-    <li *ngFor="let item of list">
+<div id="shopping-list">
+    <div *ngFor="let item of list">
         <app-product [product]="item" (delete)="onDelete($event)" (edit)="onEdit($event)"></app-product>
-    </li>
-</ul>
-
+    </div>
+</div>

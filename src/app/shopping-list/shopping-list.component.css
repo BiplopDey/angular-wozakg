@@ -1,0 +1,9 @@
+#shopping-list{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+}
+
+#shopping-list > div{
+    margin: 10px;
+}
